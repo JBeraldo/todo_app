@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 100);
-            $table->text('description', 100);
-            $table->timestamp('completed_at');
-            $table->softDeletes();
+            $table->string('name', 50);
+            $table->string('path', 100);
+            $table->string('fileable_type', 100);
+            $table->integer('fileable_id');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('files');
     }
 };
