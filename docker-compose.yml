@@ -7,6 +7,11 @@ services:
         image: php81
         restart: unless-stopped
         working_dir: /var/www/
+        environment:
+            PHP_OPCACHE_VALIDATE_TIMESTAMPS: 1
+            PHP_OPCACHE_MAX_ACCELERATED_FILES: 10000
+            PHP_OPCACHE_MEMORY_CONSUMPTION: 192
+            PHP_OPCACHE_MAX_WASTED_PERCENTAGE: 10
         volumes:
             - ./:/var/www
         networks:
