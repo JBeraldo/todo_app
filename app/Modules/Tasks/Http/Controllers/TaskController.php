@@ -36,11 +36,20 @@ class TaskController extends BaseController
         $this->task_service->destroy($id);
         return response('', 204);
     }
+
     public function store(TaskRequest $request)
     {
 
         $this->task_service->store($request->toArray());
 
         return response('', 201);
+    }
+
+    public function update(TaskRequest $request)
+    {
+
+        $this->task_service->update($request->toArray());
+
+        return response('', 204);
     }
 }

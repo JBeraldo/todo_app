@@ -69,4 +69,19 @@ class TaskService
             throw $e;
         }
     }
+    public function update(array $data)
+    {
+        try {
+            DB::beginTransaction();
+
+            $model = $this->find($data['id']);
+
+            $model->update($data);
+
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
+    }
 }
