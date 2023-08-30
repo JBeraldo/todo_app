@@ -30,6 +30,12 @@ class TaskController extends BaseController
             'task' => $this->task_service->find($id),
         ]);
     }
+
+    public function destroy($id)
+    {
+        $this->task_service->destroy($id);
+        return response('', 204);
+    }
     public function store(TaskRequest $request)
     {
 

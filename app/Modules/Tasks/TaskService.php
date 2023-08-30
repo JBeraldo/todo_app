@@ -42,6 +42,20 @@ class TaskService
         return $model;
     }
 
+    public function destroy(Int $id)
+    {
+        try {
+            DB::beginTransaction();
+
+            $this->model->destroy($id);
+
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
+    }
+
     public function store(array $data)
     {
         try {
